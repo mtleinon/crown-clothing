@@ -6,7 +6,8 @@ const testSections = [
     title: 'hats',
     imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
     id: 1,
-    linkUrl: 'shop/hats'
+    linkUrl: 'hats'
+    // linkUrl: 'shop/hats'
   },
   {
     title: 'jackets',
@@ -40,7 +41,7 @@ export default function Directory() {
   const [sections, setSections] = useState(testSections);
   return (
     <div className="directory-menu" >
-      {sections.map(({title, imageUrl, id, size})=> <MenuItem key={id} title={title} imageUrl={imageUrl} size={size}/>)}
+      {sections.map(({id, ...section})=> <MenuItem key={id} {...section}/>)}
     </div>
   )
 }
