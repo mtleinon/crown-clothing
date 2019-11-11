@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import FormInput from './FormInput';
 import CustomButton from './CustomButton';
+import {signInWithGoogle} from '../firebase/firebaseUtils';
+
 import './SignIn.scss';
 
 export default function SignIn() {
@@ -25,7 +27,12 @@ export default function SignIn() {
           onChange={(event)=>setPassword(event.target.value)}
           label='Password'
           required />
-        <CustomButton type="submit">Sign In</CustomButton>
+          <div className="buttons">
+            <CustomButton type="submit">Sign In</CustomButton>
+            <CustomButton onClick={signInWithGoogle} googleSignIn>
+              Sign In With Google
+            </CustomButton>
+          </div>
       </form>
     </div>
   )

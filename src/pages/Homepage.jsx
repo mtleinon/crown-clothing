@@ -1,5 +1,5 @@
 import React from 'react'
-import Directory from './Directory';
+import Directory from '../components/Directory';
 import './Homepage.scss';
 
 export default function Homepage() {
