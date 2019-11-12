@@ -4,16 +4,26 @@ import CustomButton from './CustomButton';
 import {signInWithGoogle} from '../firebase/firebaseUtils';
 
 import './SignIn.scss';
+import { auth } from '../firebase/firebaseUtils';
+
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async event => {
     event.preventDefault();
-    setEmail('');
-    setPassword('');
+
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      console.log('User logged in');
+      setEmail('');
+      setPassword('');
+    } catch (error) {
+      console.debug('handle submit error =', error);
+    }
   }
+
   return (
     <div className="sign-in">
       <h2>I have already an account</h2>      

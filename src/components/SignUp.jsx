@@ -12,7 +12,6 @@ export default function () {
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleSubmit = async event => {
-    console.debug('displayName, password, confirmPassword, email =', displayName, password, confirmPassword, email);
     event.preventDefault();
     if(password !== confirmPassword) {
       alert("Passwords don't match");
