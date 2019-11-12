@@ -1,11 +1,14 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
+import {useSelector} from 'react-redux';
 import {ReactComponent as Logo} from '../assets/crown.svg';
 import './Header.scss';
 import { auth } from '../firebase/firebaseUtils';
 
 
-export default function Header({currentUser}) {
+export default function Header() {
+  const currentUser = useSelector(state => state.user.currentUser);
+
   console.debug('auth =', auth);
   return (
     <div className="header">
