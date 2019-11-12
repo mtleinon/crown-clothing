@@ -1,10 +1,12 @@
 import React from 'react'
 import SignIn from '../components/SignIn';
-// import './SignInAndSignUp.scss';
+import SignUp from '../components/SignUp';
+import './SignInAndSignUp.scss';
 export default function SignInAndSignUp() {
   return (
     <div className='sign-in-and-sign-up'>
       <SignIn />
-    </div>
+      <SignUp />
+    </div>  
   )
 }
