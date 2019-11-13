@@ -6,12 +6,13 @@ import './CartIcon.scss';
 
 export default function CartIcon() {
   const dispatch = useDispatch();
-  const cartVisible = useSelector(state => state.cart.cartVisible);
+  const cartItems = useSelector(state => state.cart.cartItems);
+  const cartItemQuantity = cartItems.reduce((quantity, item) => quantity + item.quantity, 0);
 
   return (
     <div className="cart-icon" onClick={()=>dispatch(toggleCartVisibility())}>
       <ShoppingIcon className='shopping-icon'/>
-      <span className="item-count">0</span>
+      <span className="item-count">{cartItemQuantity}</span>
     </div>
   )
 }
