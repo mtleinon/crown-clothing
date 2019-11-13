@@ -1,7 +1,13 @@
 import React from 'react'
+import {useDispatch} from 'react-redux';
+import * as cartActions from '../reducer/cartActions';
+
 import './CollectionItem.scss';
 import CustomButton from './CustomButton';
+
 export default function CollectionItem({item}) {
+  const dispatch = useDispatch();
+
   return (
     <div className="collection-item">
       <div className="image"
@@ -10,7 +16,12 @@ export default function CollectionItem({item}) {
         <span className="name">{item.name}</span>
         <span className="price">{item.price}</span>
       </div>
-      <CustomButton inverted>Add to cart</CustomButton>
+      <CustomButton 
+        inverted 
+        onClick={()=>dispatch(cartActions.addItem(item))}
+      >
+        Add to cart
+      </CustomButton>
     </div>
   )
 }
