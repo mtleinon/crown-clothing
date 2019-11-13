@@ -12,6 +12,9 @@
   font-family: 'Open Sans Condensed';
   font-weight: bolder;
   border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 
   &:hover {
@@ -30,4 +33,15 @@
     }
   }
 
+  &.inverted {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+
+    &:hover {
+      background-color: black;
+      color: white;
+      border: none;
+    }
+  }
 }
