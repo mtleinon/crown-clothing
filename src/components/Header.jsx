@@ -4,10 +4,12 @@ import {useSelector} from 'react-redux';
 import {ReactComponent as Logo} from '../assets/crown.svg';
 import './Header.scss';
 import { auth } from '../firebase/firebaseUtils';
-
+import CartIcon from './CartIcon';
+import CartDropdown from './CartDropdown';
 
 export default function Header() {
   const currentUser = useSelector(state => state.user.currentUser);
+  const cartVisible = useSelector(state => state.cart.cartVisible);
 
   console.debug('auth =', auth);
   return (
@@ -28,7 +30,9 @@ export default function Header() {
               SIGN IN
             </Link>)
           }
+          <CartIcon/>
         </div>
+        {cartVisible && <CartDropdown/>}
     </div>
   )
 }
