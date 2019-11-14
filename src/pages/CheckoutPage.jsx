@@ -2,6 +2,7 @@ import React from 'react';
 import './CheckoutPage.scss';
 import {useSelector} from 'react-redux';
 import CheckoutItem from '../components/CheckoutItem';
+import StripeCheckoutButton from '../components/StripeCheckoutButton';
 
 export default function CheckoutPage() {
   const cartItems = useSelector(state => state.cart.cartItems);
@@ -30,6 +31,11 @@ export default function CheckoutPage() {
       </div>
       {cartItems.map(item=><CheckoutItem key={item.id} item={item} />)}
       <div className="total">${totalPrice}</div>
+      <div style={{color: 'red'}}>
+        Test Credict card:
+        4242 4242 4242 4242 - 01/20 - 123
+      </div>
+      <StripeCheckoutButton price={totalPrice}/>
     </div>
   );
 }

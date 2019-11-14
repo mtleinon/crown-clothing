@@ -2,6 +2,7 @@ import React from 'react';
 import './CheckoutItem.scss';
 import {useDispatch} from 'react-redux';
 import * as cartActions from '../reducer/cartActions';
+
 export default function CheckoutItem({item}) {
   const dispatch = useDispatch();
   return (
