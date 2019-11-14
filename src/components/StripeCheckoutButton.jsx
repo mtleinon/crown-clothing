@@ -13,6 +13,7 @@ export default function StripeCheckoutButton({price}) {
   return (
     <StripeCheckout
       label='Pay now'
+      token={onToken}
       name='Crown Clothing Ltd.'
       billingAddress
       shippingAddress

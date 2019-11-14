@@ -41,9 +41,11 @@ import './Directory.scss';
 
 export default function Directory() {
   const sections = useSelector(state=>state.directory.directory);
+
   return (
     <div className="directory-menu" >
-      {sections.map(({id, ...section})=> <MenuItem key={id} {...section}/>)}
+      {  Object.values(sections).map(({id, ...section})=> <MenuItem key={id} {...section}/>)
+      }
     </div>
   )
 }
