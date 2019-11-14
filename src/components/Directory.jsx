@@ -38,7 +38,7 @@ const testSections = [
 ];
 
 export default function Directory() {
-  const [sections, setSections] = useState(testSections);
+  const [sections] = useState(testSections);
   return (
     <div className="directory-menu" >
       {sections.map(({id, ...section})=> <MenuItem key={id} {...section}/>)}
