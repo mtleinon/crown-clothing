@@ -5,11 +5,15 @@ import storage from 'redux-persist/lib/storage';
 import logger from 'redux-logger';
 
 import userReducer from './userReducer';
+import directoryReducer from './directoryReducer';
 import cartReducer from './cartReducer';
+import shopReducer from './shopReducer';
 
 const rootReducer = combineReducers({
   user: userReducer,
-  cart: cartReducer
+  cart: cartReducer,
+  shop: shopReducer,
+  directory: directoryReducer
 });
 
 const middleware = applyMiddleware(logger);

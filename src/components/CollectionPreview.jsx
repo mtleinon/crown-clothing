@@ -7,7 +7,7 @@ export default function CollectionPreview({collection}) {
     <div className="collection-preview">
       <h1 className="title">{collection.title.toUpperCase()}</h1>
       <div className="preview">
-        {collection.items.map(item=>(<CollectionItem key={item.id} item={item}/>))}
+        {collection.items.slice(0,4).map(item=>(<CollectionItem key={item.id} item={item}/>))}
       </div>
     </div>
   )
