@@ -16,7 +16,12 @@ const rootReducer = combineReducers({
   directory: directoryReducer
 });
 
-const middleware = applyMiddleware(logger);
+const middlewares = [];
+if (process.env.NODE_ENV === 'development') {
+  middlewares.push(logger);
+}
+
+const middleware = applyMiddleware(...middlewares);
 
 const persistConfig = {
   key: 'root',
