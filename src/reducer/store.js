@@ -17,6 +17,8 @@ const rootReducer = combineReducers({
 });
 
 const middlewares = [];
+console.debug('process =', process, process.env, process.env.NODE_ENV);
+
 if (process.env.NODE_ENV === 'development') {
   middlewares.push(logger);
 }
