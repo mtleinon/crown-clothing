@@ -26,7 +26,7 @@ export default function ShopPage({ match }) {
     // dispatch(shopActions.fetchCollections());
     const collectionRef = firestore.collection('collections');
 
-    collectionRef.onSnapshot(async snapshot => {
+    collectionRef.get().then(async snapshot => {
       dispatch(
         shopActions.addCollections(convertCollectionsSnapshotToMap(snapshot))
       );
