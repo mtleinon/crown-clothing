@@ -16,12 +16,14 @@ export default function CollectionItem({item}) {
         <span className="name">{item.name}</span>
         <span className="price">{item.price}</span>
       </div>
-      <CustomButton 
-        inverted 
-        onClick={()=>dispatch(cartActions.addItem(item))}
-      >
-        Add to cart
-      </CustomButton>
+      <div className="custom-button">
+        <CustomButton 
+          inverted 
+          onClick={()=>dispatch(cartActions.addItem(item))}
+          >
+          Add to cart
+        </CustomButton>
+      </div>
     </div>
   )
 }

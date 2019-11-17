@@ -8,7 +8,7 @@ export default function CollectionsOverview() {
 
   return (
     <div className="collections-overview">
-      {collections.map(collection=>
+      {Object.values(collections).map(collection=>
         <CollectionPreview key={collection.id} collection={collection} />)
       }
     </div>

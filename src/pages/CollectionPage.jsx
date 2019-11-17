@@ -7,7 +7,7 @@ export default function CollectionPage({match}) {
   console.debug('match =', match);
   const collections = useSelector(state=>state.shop.collections);
   console.debug('collections =', collections);
-  const collection = collections.find(c => c.routeName===match.params.collectionId);
+  const collection = collections[match.params.collectionId];
   console.debug('collection =', collection);
   if (!collection) {
     return <h2>Collection doesn't exist.</h2>

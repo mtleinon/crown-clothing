@@ -13,7 +13,6 @@ import { setCurrentUser } from './reducer/userActions';
 function App() {
   const currentUser = useSelector(state => state.user.currentUser);
   const dispatch = useDispatch();
-  // const [currentUser, setCurrentUser] = useState(null);
 
   // onAuthStateChanged returns unsubscribe function which will be 
   // run by React when component will unmount.
@@ -29,9 +28,9 @@ function App() {
             id: snapShot.id,
             ...snapShot.data()
           }));
-
         });
         console.debug('onAuthStateChanged user =', userRef);
+
       } else {
         console.debug('onAuthStateChanged user logged out');
         dispatch(setCurrentUser(null));
