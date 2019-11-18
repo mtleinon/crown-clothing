@@ -1,0 +1,11 @@
+###
+
+GET https://docs-examples.firebaseio.com/rest/saving-data/fireblog/posts.json
+
+###
+
+GET https://crown-db.firebaseio.com/users
+content-type: application/json
+
+###
+GET https://firestore.googleapis.com/v1/projects/crown-db/databases/(default)/documents/collections
