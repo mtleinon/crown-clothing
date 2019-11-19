@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCollectionsAsync } from '../reducer/shopActions';
+import { fetchCollectionsStart } from '../reducer/shopActions';
+//import { fetchCollectionsStart } from '../reducer/shopSagas';
 import './ShopPage.scss';
 
 import WithSpinner from '../components/WithSpinner';
@@ -16,7 +17,8 @@ export default function ShopPage({ match }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCollectionsAsync());
+    // dispatch(fetchCollectionsAsync());
+    dispatch(fetchCollectionsStart());
   }, [dispatch]);
 
   return (
