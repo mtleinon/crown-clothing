@@ -1,4 +1,10 @@
-import { TOGGLE_CART_VISIBILITY, ADD_ITEM, REMOVE_ITEM, DELETE_ITEM } from './cartActions';
+import {
+  TOGGLE_CART_VISIBILITY,
+  ADD_ITEM,
+  REMOVE_ITEM,
+  DELETE_ITEM,
+  CLEAR_CART
+} from './cartActions';
 
 const INITIAL_STATE = {
   cartVisible: false,
@@ -47,6 +53,11 @@ export default function (state = INITIAL_STATE, action) {
         cartItems: state.cartItems.filter(
           cartItem => cartItem.id !== action.itemId
         )
+      }
+    case CLEAR_CART:
+      return {
+        ...state,
+        cartItems: []
       }
     default:
       return state;

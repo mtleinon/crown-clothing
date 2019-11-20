@@ -7,8 +7,7 @@ import ShopPage from './pages/ShopPage';
 import CheckoutPage from './pages/CheckoutPage';
 import SignInAndSignUp from './pages/SignInAndSignUp';
 import Header from './components/Header';
-import { auth, createUserProfileDocument } from './firebase/firebaseUtils';
-import { setCurrentUser } from './reducer/userActions';
+import { checkUserSession } from './reducer/userActions';
 
 function App() {
   const currentUser = useSelector(state => state.user.currentUser);
@@ -17,25 +16,7 @@ function App() {
   // onAuthStateChanged returns unsubscribe function which will be 
   // run by React when component will unmount.
   useEffect(() => {
-    return auth.onAuthStateChanged(async userAuth => {
-      // setCurrentUser(user);
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
-        userRef.onSnapshot(snapShot => {
-          console.debug('snapShot =', snapShot);
-          console.debug('snapShot.data() =', snapShot.data());
-          dispatch(setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data()
-          }));
-        });
-        console.debug('onAuthStateChanged user =', userRef);
-
-      } else {
-        console.debug('onAuthStateChanged user logged out');
-        dispatch(setCurrentUser(null));
-      }
-    });
+    dispatch(checkUserSession());
   }, [dispatch]);
 
 
