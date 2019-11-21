@@ -4,7 +4,7 @@ import FormInput from './FormInput';
 import './SignUp.scss';
 
 import CustomButton from './CustomButton';
-import { auth, createUserProfileDocument } from '../firebase/firebaseUtils';
+// import { auth, createUserProfileDocument } from '../firebase/firebaseUtils';
 import { singUpStart } from '../reducer/userActions';
 
 export default function() {

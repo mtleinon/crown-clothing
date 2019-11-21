@@ -6,7 +6,7 @@ import { googleSignInStart, emailSignInStart } from '../reducer/userActions';
 import { useDispatch } from 'react-redux';
 
 import './SignIn.scss';
-import { auth } from '../firebase/firebaseUtils';
+// import { auth } from '../firebase/firebaseUtils';
 
 export default function SignIn() {
   const [email, setEmail] = useState('');

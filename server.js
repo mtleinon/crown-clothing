@@ -5,6 +5,8 @@ const path = require('path');
 
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -14,11 +16,35 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 if (process.env.NODE_ENV === 'production') {
+  console.debug('production set * route to return React app');
   app.use(express.static(path.join(__dirname, 'client/build')));
   app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
   });
 }
+
+app.post('/payment', (req, res) => {
+  console.debug('req =');
+  const body = {
+    source: req.body.token.id,
+    amount: req.body.amount,
+    currency: 'usd'
+  };
+  console.debug('body =', body);
+  stripe.charges.create(body, (stripeErr, stripeRes) => {
+    console.debug('stripeRes =', stripeRes);
+    // console.debug('stripeErr =', stripeErr);
+    if (stripeErr) {
+      res.status(500).send({ error: 'Server internal error' });
+      console.error('Error from Stripe server =', stripeErr.message);
+    } else {
+      console.debug('Stripe success stripeRes.receipt_url =', stripeRes.receipt_url);
+      res.status(200).send({
+        success: "Payment succeeded: receipt: " + stripeRes.receipt_url
+      });
+    }
+  })
+})
 
 app.listen(port, error => {
   if (error) throw error;
