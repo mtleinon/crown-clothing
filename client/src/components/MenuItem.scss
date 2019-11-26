@@ -9,7 +9,7 @@
   border: 1px solid black;
   margin: 0 7.5px 15px;
   overflow: hidden;
-  
+
   & .background-image {
     background-position: center;
     background-size: cover;
@@ -63,5 +63,8 @@
       font-weight: lighter;
       font-size: 16px;
     }
+  }
+  @media screen and (max-width: 800px) {
+    height: 200px;
   }
 }

@@ -1,7 +1,7 @@
 .collection-item {
   width: 22vw;
-  min-width: 200px;
-  max-width: 250px;
+  // min-width: 200px;
+  // max-width: 250px;
   display: flex;
   flex-direction: column;
   height: 350px;
@@ -16,6 +16,7 @@
     background-size: cover;
     background-position: center;
     margin-bottom: 5px;
+    margin: auto;
   }
 
   .collection-footer {
@@ -37,19 +38,44 @@
     }
   }
   .custom-button {
-    width: 80%;
+    width: 90%;
     opacity: 0.7;
     position: absolute;
     top: 255px;
     display: none;
+    left: 50%;
+    transform: translate(-82px);
+
+    @media screen and (max-width: 800px) {
+      display: block;
+      opacity: 0.9;
+      min-width: unset;
+      padding: 0 10px 0 10px;
+      transform: translate(-65px);
+    }
   }
   &:hover {
     .image {
-      opacity: .8;
+      opacity: 0.8;
     }
     .custom-button {
-      opacity: .85;
+      opacity: 0.85;
       display: flex;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    width: 45vw;
+    display: flex;
+    justify-self: center;
+    justify-content: space-between;
+    &:hover {
+      .image {
+        opacity: unset;
+      }
+      .custom-button {
+        opacity: unset;
+      }
     }
   }
 }

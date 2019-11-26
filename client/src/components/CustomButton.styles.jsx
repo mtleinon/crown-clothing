@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const googleSignInStyles = css`
   box-sizing: border-box;
@@ -33,7 +33,7 @@ const invertedButtonStyles = css`
 `;
 
 const getButtonStyles = props => {
-  if(props.googleSignIn) {
+  if (props.googleSignIn) {
     return googleSignInStyles;
   }
 
@@ -42,7 +42,7 @@ const getButtonStyles = props => {
 
 export const CustomButtonContainer = styled.button`
   min-width: 165px;
-  width: auto;
+  /* width: auto; */
   height: 50px;
   letter-spacing: 0.5px;
   line-height: 50px;
@@ -58,6 +58,9 @@ export const CustomButtonContainer = styled.button`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  @media screen and (max-width: 800px) {
+    padding: 0 20px 0 20px;
+    min-width: 100px;
+  }
   ${getButtonStyles}
-  `;
-  
+`;
