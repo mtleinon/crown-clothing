@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import FormInput from './FormInput';
 import CustomButton from './CustomButton';
-// import { signInWithGoogle } from '../firebase/firebaseUtils';
 import { googleSignInStart, emailSignInStart } from '../reducer/userActions';
 import { useDispatch } from 'react-redux';
 
 import './SignIn.scss';
-// import { auth } from '../firebase/firebaseUtils';
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
@@ -18,16 +16,6 @@ export default function SignIn() {
     dispatch(emailSignInStart({ email, password }));
     setEmail('');
     setPassword('');
-    console.debug('handleSubmit: emailSignInStart');
-
-    // try {
-    //   await auth.signInWithEmailAndPassword(email, password);
-    //   console.log('User logged in');
-    //   setEmail('');
-    //   setPassword('');
-    // } catch (error) {
-    //   console.debug('handle submit error =', error);
-    // }
   };
 
   return (

@@ -12,7 +12,7 @@ import shopReducer from './shopReducer';
 
 import rootSaga from './rootSaga';
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   user: userReducer,
   cart: cartReducer,
   shop: shopReducer,
@@ -22,7 +22,7 @@ const rootReducer = combineReducers({
 const sagaMiddleware = createSagaMiddleware();
 
 const middlewares = [sagaMiddleware];
-console.debug('process =', process, process.env, process.env.NODE_ENV);
+// console.debug('process =', process, process.env, process.env.NODE_ENV);
 
 if (process.env.NODE_ENV === 'development') {
   middlewares.push(logger);

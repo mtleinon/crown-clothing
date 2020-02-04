@@ -1,13 +1,12 @@
 .collection-item {
   width: 22vw;
-  // min-width: 200px;
-  // max-width: 250px;
+  min-width: 200px;
+  max-width: 300px;
+  padding: 8px;
   display: flex;
   flex-direction: column;
   height: 350px;
   align-items: center;
-  // margin-bottom: 25px;
-  // background-color: #eee;
   position: relative;
 
   .image {
@@ -77,5 +76,9 @@
         opacity: unset;
       }
     }
+  }
+
+  @media screen and (max-width: 400px) {
+    width: 60vw;
   }
 }

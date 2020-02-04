@@ -1,7 +1,7 @@
 import React from 'react';
 import './CartItem.scss';
 
-const CartItem = ({ item }) => {
+export const CartItem = ({ item }) => {
   return (
     <div className='cart-item'>
       <img src={item.imageUrl} alt='item' />
@@ -15,5 +15,4 @@ const CartItem = ({ item }) => {
   );
 };
 
-// export default CartItem;
 export default React.memo(CartItem);

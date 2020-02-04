@@ -1,5 +1,5 @@
-import React from 'react'
-import {useSelector} from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 import MenuItem from './MenuItem';
 import './Directory.scss';
@@ -40,12 +40,13 @@ import './Directory.scss';
 // ];
 
 export default function Directory() {
-  const sections = useSelector(state=>state.directory.directory);
+  const sections = useSelector(state => state.directory.directory);
 
   return (
-    <div className="directory-menu" >
-      {  Object.values(sections).map(({id, ...section})=> <MenuItem key={id} {...section}/>)
-      }
+    <div className='directory-menu'>
+      {Object.values(sections).map(({ id, ...section }) => (
+        <MenuItem key={id} {...section} />
+      ))}
     </div>
-  )
+  );
 }

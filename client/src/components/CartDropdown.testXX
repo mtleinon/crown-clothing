@@ -1,0 +1,43 @@
+import React from 'react';
+
+import { shallow } from 'enzyme';
+
+import CartDropdown from './CartDropdown';
+
+describe('CartDropdown component', () => {
+  let wrapper;
+  let mockHistory;
+  let mockDispatch;
+
+  const mockCartItems = [{ id: 1 }, { id: 2 }, { id: 3 }];
+
+  beforeEach(() => {
+    mockHistory = {
+      push: jest.fn()
+    };
+
+    jest.mock('react-router-dom', () => ({
+      ...jest.requireActual('react-router-dom'),
+      useHistory: () => ({
+        push: jest.fn()
+      })
+    }));
+    // jest.mock('react-router-dom', () => ({
+    //   useHistory: () => ({
+    //     push: jest.fn()
+    //   })
+    // }));
+    // mockDispatch = jest.fn();
+    // const mockProps = {
+    //   cartItems: mockCartItems,
+    //   // history: mockHistory,
+    //   dispatch: mockDispatch
+    // };
+
+    wrapper = shallow(<CartDropdown />);
+  });
+
+  it('should render CartDropdown component', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+});
