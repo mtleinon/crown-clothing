@@ -16,7 +16,7 @@ export default function CartDropdown() {
   const buttonHandler = useCallback(() => {
     history.push(`/checkout`);
     dispatch(toggleCartVisibility());
-  }, []);
+  }, [dispatch, history]);
 
   return (
     <div className='cart-dropdown'>
