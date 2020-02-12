@@ -8,7 +8,7 @@ export default function Homepage() {
       <Profiler
         id='Directory'
         onRender={(id, phase, actualDuration) => {
-          console.debug({ id, phase, actualDuration });
+          // console.debug({ id, phase, actualDuration });
         }}
       >
         <Directory />

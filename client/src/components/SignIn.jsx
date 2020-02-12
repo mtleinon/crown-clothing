@@ -2,19 +2,21 @@ import React, { useState } from 'react';
 import FormInput from './FormInput';
 import CustomButton from './CustomButton';
 import { googleSignInStart, emailSignInStart } from '../reducer/userActions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import './SignIn.scss';
+import ErrorMessage from './ErrorMessage';
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
+  const user = useSelector(state => state.user);
 
   const handleSubmit = async event => {
     event.preventDefault();
     dispatch(emailSignInStart({ email, password }));
-    setEmail('');
+    // setEmail('');
     setPassword('');
   };
 
@@ -50,6 +52,9 @@ export default function SignIn() {
           </CustomButton>
         </div>
       </form>
+      {user && user.signInError && (
+        <ErrorMessage>Login Failed: {user.signInError.message}</ErrorMessage>
+      )}
     </div>
   );
 }

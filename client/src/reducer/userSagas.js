@@ -29,14 +29,17 @@ export function* getSnapshotFromUserAuth(user) {
     yield put(
       signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() })
     );
+    // console.debug('signup succeeded userSnapshot.data() =', userSnapshot.data());
   } catch (error) {
     yield put(signInFailure(error));
+    // console.debug('signup failed error   =', error);
   }
 }
+
 export function* signInWithGoogle() {
   try {
     const { user } = yield auth.signInWithPopup(googleProvider);
-    console.debug('user =', user);
+    // console.debug('user =', user);
     yield getSnapshotFromUserAuth(user);
   } catch (error) {
     yield put(signInFailure(error));
@@ -51,8 +54,10 @@ export function* signInWithEmail({ emailAndPassword: { email, password } }) {
   try {
     const { user } = yield auth.signInWithEmailAndPassword(email, password);
     yield getSnapshotFromUserAuth(user);
+    // console.debug('Email authentication succeeded =');
   } catch (error) {
     yield put(signInFailure(error));
+    // console.debug('Email authentication failed =');
   }
 }
 
@@ -78,7 +83,6 @@ export function* signOutUser() {
   }
 }
 
-// export function* signUp({ email, password, displayName }) {
 export function* signUp({ userInfo: { email, password, displayName } }) {
   try {
     const { user } = yield auth.createUserWithEmailAndPassword(email, password);

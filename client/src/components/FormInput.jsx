@@ -1,18 +1,27 @@
-import React from 'react'
+import React from 'react';
 import './FormInput.scss';
 
-export default function FormInput(
-  { onChange, label, ...otherProps}
-) {
-
+export default function FormInput({ onChange, label, ...otherProps }) {
   return (
-    <div className="group">
-      <input name="input" type="text" className="form-input" onChange={onChange} {...otherProps}/>
+    <div className='group'>
+      <input
+        name='input'
+        type='text'
+        className='form-input'
+        onChange={onChange}
+        {...otherProps}
+        autoComplete='off'
+      />
       {label ? (
-        <label className={`${otherProps.value.length ? 'shrink' : ''} form-input-label`}  htmlFor="input">
+        <label
+          className={`${
+            otherProps.value.length ? 'shrink' : ''
+          } form-input-label`}
+          htmlFor='input'
+        >
           {label}
         </label>
-      ): null}
+      ) : null}
     </div>
-  )
+  );
 }

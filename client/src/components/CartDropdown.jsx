@@ -10,7 +10,7 @@ import CartItem from './CartItem';
 export default function CartDropdown() {
   const history = useHistory();
   const dispatch = useDispatch();
-  //TODO: Check how to prevent unnecesary rerendering  when e.g only state.user changes
+  //TODO: Check how to prevent unnecessary re rendering  when e.g only state.user changes
   const cartItems = useSelector(state => state.cart.cartItems);
 
   const buttonHandler = useCallback(() => {
@@ -30,11 +30,9 @@ export default function CartDropdown() {
         )}
       </div>
       <CustomButton
+        disabled={cartItems.length === 0}
         onClick={buttonHandler}
-        // onClick={()=>{
-        //   history.push(`/checkout`);
-        //   dispatch(toggleCartVisibility());
-        // }}
+        style={{ maxWidth: '100%' }}
       >
         GO TO CHECKOUT
       </CustomButton>

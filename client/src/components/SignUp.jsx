@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import FormInput from './FormInput';
 import './SignUp.scss';
+import ErrorMessage from './ErrorMessage';
 
 import CustomButton from './CustomButton';
 // import { auth, createUserProfileDocument } from '../firebase/firebaseUtils';
@@ -13,6 +14,7 @@ export default function() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const user = useSelector(state => state.user);
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -21,18 +23,8 @@ export default function() {
       return;
     }
     dispatch(singUpStart({ email, password, displayName }));
-    // try {
-    //   const { user} = await auth.createUserWithEmailAndPassword( email, password);
-    //   await createUserProfileDocument(user, {displayName});
-
-    //   setDisplayName('');
-    //   setEmail('');
-    //   setPassword('');
-    //   setConfirmPassword('');
-
-    // } catch (error) {
-    //   console.error('handleSubmit error =', error);
-    // }
+    setPassword('');
+    setConfirmPassword('');
   };
 
   return (
@@ -74,6 +66,9 @@ export default function() {
         />
         <CustomButton type='submit'>SIGN UP</CustomButton>
       </form>
+      {user && user.signUpError && (
+        <ErrorMessage>Sign up failed: {user.signUpError.message}</ErrorMessage>
+      )}
     </div>
   );
 }

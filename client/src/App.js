@@ -16,17 +16,15 @@ const SignInAndSignUp = lazy(() => import('./pages/SignInAndSignUp'));
 const ShopPage = lazy(() => import('./pages/ShopPage'));
 // import Homepage from './pages/Homepage';
 const Homepage = lazy(() => import('./pages/Homepage'));
+const UserPage = lazy(() => import('./pages/UserPage'));
 
 function App() {
   const currentUser = useSelector(state => state.user.currentUser);
   const dispatch = useDispatch();
 
-  // onAuthStateChanged returns unsubscribe function which will be 
-  // run by React when component will unmount.
   useEffect(() => {
     dispatch(checkUserSession());
   }, [dispatch]);
-
 
   return (
     <div>
@@ -41,6 +39,7 @@ function App() {
             <Route exact path='/checkout' component={CheckoutPage} />
             <Route exact path='/signIn' render={() =>
               currentUser ? <Redirect to='/' /> : <SignInAndSignUp />} />
+            <Route path='/user' component={UserPage} />
           </Suspense>
         </ErrorBoundary>
       </Switch>

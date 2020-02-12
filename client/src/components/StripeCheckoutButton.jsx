@@ -1,9 +1,12 @@
 import React from 'react';
-// import './StripeButton.scss';
+import { useSelector } from 'react-redux';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
+import CustomButton from './CustomButton';
+import { createPurchaseDocument } from '../firebase/firebaseUtils';
 
-export default function StripeCheckoutButton({ price }) {
+export default function StripeCheckoutButton({ price, cartItems }) {
+  const currentUser = useSelector(state => state.user.currentUser);
   const publishableKey = 'pk_test_sDLdxDevqO92iJKzcODTf8lW';
   const priceForStripe = price * 100;
 
@@ -19,7 +22,13 @@ export default function StripeCheckoutButton({ price }) {
       .then(response => {
         console.debug('response =', response);
         console.debug('status =', response.data.success);
+
+        const receipt = response.data.success.slice(
+          response.data.success.search('https')
+        );
+        console.debug('receipt =', receipt);
         //TODO give user a possibility to view recipe URL
+        createPurchaseDocument(currentUser.id, price, cartItems, receipt);
         alert('Payment successful: ' + response.data.success);
       })
       .catch(error => {
@@ -32,6 +41,7 @@ export default function StripeCheckoutButton({ price }) {
 
   return (
     <StripeCheckout
+      style={{ color: 'red' }}
       label='Pay now'
       token={onToken}
       name='Crown Clothing Ltd.'
@@ -41,6 +51,8 @@ export default function StripeCheckoutButton({ price }) {
       description={`Your total is $${price}`}
       amount={priceForStripe}
       stripeKey={publishableKey}
-    />
+    >
+      <CustomButton disabled={cartItems.length === 0}>Pay Now</CustomButton>
+    </StripeCheckout>
   );
 }

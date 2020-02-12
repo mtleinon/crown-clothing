@@ -1,0 +1,43 @@
+.purchases {
+  width: 100%;
+
+  .purchased-header {
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid darkgrey;
+    text-transform: capitalize;
+
+    .name {
+      width: 70%;
+    }
+
+    .quantity {
+      width: 10%;
+      text-align: end;
+    }
+    .price {
+      width: 20%;
+      text-align: end;
+    }
+  }
+
+  .total {
+    width: 100%;
+    margin: 10px 0 30px 0;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: right;
+  }
+
+  .date {
+    align-self: flex-start;
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+.title {
+  width: 100%;
+  text-align: left;
+}

@@ -26,6 +26,7 @@ export default function ShopPage({ match }) {
     // dispatch(fetchCollectionsAsync());
     dispatch(fetchCollectionsStart());
   }, [dispatch]);
+
   return (
     <div className='shop-page'>
       <Suspense fallback={<Spinner />}>

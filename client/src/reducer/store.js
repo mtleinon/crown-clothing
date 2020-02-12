@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import logger from 'redux-logger';
+// import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 
 import userReducer from './userReducer';
@@ -16,16 +16,17 @@ export const rootReducer = combineReducers({
   user: userReducer,
   cart: cartReducer,
   shop: shopReducer,
-  directory: directoryReducer
+  directory: directoryReducer,
 });
 
 const sagaMiddleware = createSagaMiddleware();
 
-const middlewares = [sagaMiddleware];
-// console.debug('process =', process, process.env, process.env.NODE_ENV);
+const middlewares = [
+  sagaMiddleware
+];
 
 if (process.env.NODE_ENV === 'development') {
-  middlewares.push(logger);
+  // middlewares.push(logger);
 }
 
 const middleware = applyMiddleware(...middlewares);
@@ -38,7 +39,10 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export const store = createStore(persistedReducer, middleware);
+export const store = createStore(
+  persistedReducer,
+  middleware
+);
 
 sagaMiddleware.run(rootSaga);
 

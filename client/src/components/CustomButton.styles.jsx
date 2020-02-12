@@ -19,6 +19,12 @@ const buttonStyles = css`
     color: black;
     border: 1px solid black;
   }
+  &:disabled {
+    background-color: #aaa;
+    color: black;
+    border: none;
+    cursor: default;
+  }
 `;
 
 const invertedButtonStyles = css`
@@ -29,6 +35,9 @@ const invertedButtonStyles = css`
     background-color: black;
     color: white;
     border: none;
+  }
+  &:disabled {
+    color: red;
   }
 `;
 
@@ -42,11 +51,12 @@ const getButtonStyles = props => {
 
 export const CustomButtonContainer = styled.button`
   min-width: 165px;
+  max-width: 45%;
   /* width: auto; */
   height: 50px;
   letter-spacing: 0.5px;
   line-height: 50px;
-  padding: 0 35px 0 35px;
+  padding: 0 5px 0 5px;
   font-size: 15px;
   /* background-color: black;
   color: white; */
@@ -58,9 +68,9 @@ export const CustomButtonContainer = styled.button`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  @media screen and (max-width: 800px) {
-    padding: 0 20px 0 20px;
-    min-width: 100px;
-  }
+  /* @media screen and (max-width: 800px) {
+    padding: 0 5px 0 5px;
+    min-width: 150px;
+  } */
   ${getButtonStyles}
 `;

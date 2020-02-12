@@ -1,0 +1,19 @@
+.user-data-container {
+  width: 100%;
+
+  .user-data {
+    width: 100%;
+    display: flex;
+    padding: 0 0 10px 0;
+    font-size: 18px;
+    align-items: center;
+    margin-left: 20px;
+
+    .heading {
+      width: 30%;
+    }
+    .value {
+      width: 70%;
+    }
+  }
+}

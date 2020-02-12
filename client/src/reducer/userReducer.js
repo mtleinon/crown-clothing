@@ -9,30 +9,47 @@ import {
 
 const INITIAL_STATE = {
   currentUser: null,
-  error: null
+  signUpError: null,
+  signInError: null,
+  signOutError: null
 };
 
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
     case SIGN_UP_SUCCESS:
+      return {
+        ...state,
+        currentUser: action.user,
+        signUpError: null,
+        signInError: null
+      }
     case SIGN_IN_SUCCESS:
       return {
         ...state,
         currentUser: action.user,
-        error: null
+        signUpError: null,
+        signInError: null
       }
     case SIGN_OUT_SUCCESS:
       return {
         ...state,
         currentUser: null,
-        error: null
+        signOutError: null
       }
     case SIGN_UP_FAILURE:
+      return {
+        ...state,
+        signUpError: action.error
+      }
     case SIGN_IN_FAILURE:
+      return {
+        ...state,
+        signInError: action.error
+      }
     case SIGN_OUT_FAILURE:
       return {
         ...state,
-        error: action.error
+        signOutError: action.error
       }
     default:
       return state;

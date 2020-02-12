@@ -42,9 +42,9 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         createdAt,
         ...additionalData
       })
-      console.debug('User created =', displayName);
+      // console.debug('User created =', displayName);
     } else {
-      console.debug('User existed in db');
+      // console.debug('User existed in db');
     }
     return userRef;
   } catch (error) {
@@ -52,9 +52,45 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   }
 };
 
+export const createPurchaseDocument = (uid, price, cartContent, receipt) => {
+  if (!uid) return;
+  // console.debug('uid, cartContent =', uid, cartContent);
+  try {
+    const purchaseRef = firestore
+      .collection('users')
+      .doc(uid)
+      .collection('purchases')
+      .add({
+        cartContent,
+        price,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        receipt
+      });
+    // console.debug('Sold document created =');
+    return purchaseRef;
+  } catch (error) {
+    console.error('Error creating purchaseDocument =', error);
+  }
+};
+
+export const getPurchaseDocuments = async (uid) => {
+  // console.debug('uid, cartContent =', uid);
+  if (!uid) return;
+  try {
+    const purchases = await firestore.collection("users")
+      .doc(uid).collection('purchases').get();
+    // console.debug('purchases =', purchases);
+    return purchases;
+  } catch (error) {
+    console.error('Users ' + uid + ' purchaseDocuments, getting failed:', error);
+    return null;
+  }
+};
+
+
 export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
   const collectionRef = firestore.collection(collectionKey);
-  console.debug('collectionRef =', collectionRef);
+  // console.debug('collectionRef =', collectionRef);
 
   const batch = firestore.batch();
   objectsToAdd.forEach(obj => {
@@ -75,7 +111,7 @@ export const convertCollectionsSnapshotToMap = (collections) => {
       items
     }
   });
-  console.debug('transformedCollection =', transformedCollection);
+  // console.debug('transformedCollection =', transformedCollection);
   const reducedCollection = transformedCollection.reduce(
     (acc, collection) => {
       acc[collection.title.toLowerCase()] = collection;
@@ -83,7 +119,7 @@ export const convertCollectionsSnapshotToMap = (collections) => {
     },
     {}
   );
-  console.debug('reducedCollection =', reducedCollection);
+  // console.debug('reducedCollection =', reducedCollection);
   return reducedCollection;
 };
 

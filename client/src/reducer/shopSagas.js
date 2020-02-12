@@ -11,7 +11,7 @@ import {
 } from './shopActions';
 
 export function* fetchCollectionsAsync() {
-  yield console.debug(' saga 1 =');
+  // yield console.debug(' saga 1 =');
 
   try {
     const collectionRef = firestore.collection('collections');

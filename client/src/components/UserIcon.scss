@@ -1,0 +1,25 @@
+.user-icon {
+  width: 45px;
+  height: 45px;
+  position: relative;
+  display: flex;
+  // align-items: center;
+  justify-content: center;
+  top: 9px;
+  cursor: pointer;
+
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+  .icon-small {
+    width: 16px;
+    height: 16px;
+  }
+  .name {
+    position: absolute;
+    font-weight: bold;
+    bottom: 17px;
+    font-size: 12px;
+  }
+}
