@@ -1,7 +1,12 @@
 # crown-clothing
-This app was implemented in Udemy course "Complete React Developer in 2020 (w/ Redux, Hooks, GraphQL)"
 
-#Please use following link to tr the app: https://crown-shop-mika.herokuapp.com/shop
+This React app was implemented in Udemy course "Complete React Developer in 2020 (w/ Redux, Hooks, GraphQL)"
+
+App uses Firebase for user authentication and storing data. App is little bit different from the original implementation. Redux Thunk is used as middleware instead of Saga and the responsive design of the user interace is different.
+
+### Try the app
+
+Please use following link to try the app: https://crown-shop-mika.herokuapp.com/shop
 
 ### Video from app use
 
