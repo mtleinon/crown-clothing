@@ -6,7 +6,7 @@ App uses Firebase for user authentication and storing data. App is little bit di
 
 ### Main page of the app
 
-<img src="https://github.com/mtleinon/training/blob/master/images/crownClothing.jpg" width="500px>
+<img src="https://github.com/mtleinon/training/blob/master/images/crownClothing.jpg" width="500px">
 
 ### Try the app
 
