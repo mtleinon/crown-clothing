@@ -14,7 +14,7 @@ Below is the startup page of the app.
 
 Please use the following link to try the app: https://crown-shop-mika.herokuapp.com/shop
 
-## Video from app use
+## View demo from the app
 
 The video below shows how to use the app and how app's responsive design works:
 
