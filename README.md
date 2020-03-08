@@ -2,16 +2,20 @@
 
 This React app was implemented in Udemy course "Complete React Developer in 2020 (w/ Redux, Hooks, GraphQL)"
 
-App uses Firebase for user authentication and storing data. App is little bit different from the original implementation. Redux Thunk is used as middleware instead of Saga and the responsive design of the user interace is different.
+App uses Firebase for user authentication and storing data. Global state of the app is stored to Redux. Redux Thunk is used for communicating with the backend. Saga is used in an older version. Styling and responsive design of the app is different from the original implementation.
 
-## Main page of the app
+## Start page of the app
+
+Below is the start page of the app.
 
 <img src="https://github.com/mtleinon/training/blob/master/images/crownClothing.jpg" width="500px">
 
-## Try the app
+## Run the app
 
-Please use following link to try the app: https://crown-shop-mika.herokuapp.com/shop
+Please use the following link to try the app: https://crown-shop-mika.herokuapp.com/shop
 
 ## Video from app use
+
+The video below shows how to use the app and how app's responsive design works:
 
 https://www.loom.com/share/c92ea265f6a843a2b7aa150e25c8654d
