@@ -4,9 +4,9 @@ This React app was implemented in Udemy course "Complete React Developer in 2020
 
 App uses Firebase for user authentication and storing data. Global state of the app is stored to Redux. Redux Thunk is used for communicating with the backend. Saga is used in an older version. Styling and responsive design of the app is different from the original implementation.
 
-## Start page of the app
+## Startup page of the app
 
-Below is the start page of the app.
+Below is the startup page of the app.
 
 <img src="https://github.com/mtleinon/training/blob/master/images/crownClothing.jpg" width="500px">
 
